@@ -10,22 +10,22 @@
 
                     <h1 class=" text-center mb-3 text-light">Login <img src="https://img.icons8.com/color/35/000000/dali.png"/></h1>
                     <div class="form-group">
-                        <label class="text-light shadowall" for="usuario"> Usuário </label>
-                        <input class="form-control shadowbox" type="text" name="usuario" id="usuario" placeholder="Seu usuário">
+                        <label class="text-light shadowall" for="usuario"> E-mail </label>
+                        <input [(ngModel)]='userLogin.email' class="form-control shadowbox" type="email" name="usuario" id="usuario" placeholder="Seu e-mail">
                     </div>
 
                     <div class="form-group">
                         <label class="text-light shadowall" for="senha"> Senha</label>
-                        <input class="form-control shadowbox" type="password" name="senha" id="senha" placeholder="Sua senha">
+                        <input [(ngModel)]='userLogin.senha' class="form-control shadowbox" type="password" name="senha" id="senha" placeholder="Sua senha">
                     </div>
 
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-success">Entrar</button>
+                        <button type="submit" class="btn btn-success" (click)='entrar()'>Entrar</button>
                     </div>
 
 
-                    <p class="text-center text-light mt-3 shadowall">
-                        Não tem uma conta? <a routerLink='/cadastro'>Cadastre-se</a>
+                    <p class="text-center text-light mt-3 shadowall" >
+                        Não tem uma conta? <a  routerLink='/cadastrar'  >Cadastre-se</a>
                     </p>
 
                 </div>
@@ -34,7 +34,7 @@
         </div>
 
         <div class="col-md-6 img-fluid" id="img-bg">
-            
+
 
         </div>
     </div>

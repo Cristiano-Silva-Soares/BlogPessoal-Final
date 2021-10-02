@@ -15,14 +15,22 @@ ul.redes-sociais li{
     padding: 10px;
 }
 
+.cadastroBK{
+  background-color: #0F0D01 ;
+}
+
+.iniciopage{
+  background-color: #dfcaa0;
+}
+
 .fa-instagram:hover{
-    color: ;
+    color: #dfcaa0 ;
 }
 
 .fa-linkedin-square:hover{
-    color: ;
+    color: #dfcaa0 ;
 }
 
 .fa-github-square:hover{
-    color: ;
+    color: #dfcaa0 ;
 }
