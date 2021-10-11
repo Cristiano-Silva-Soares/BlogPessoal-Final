@@ -14,17 +14,16 @@ import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-public class Tema 
-{	
+public class Tema {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idTema;
-	
+
 	@NotBlank
 	private String tema;
-	
+
 	@OneToMany(mappedBy = "temaRelacionado", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties({"temaRelacionado"})
+	@JsonIgnoreProperties({ "temaRelacionado" })
 	private List<Postagem> postagens = new ArrayList<>();
 
 	public Long getIdTema() {
@@ -42,4 +41,13 @@ public class Tema
 	public void setTema(String tema) {
 		this.tema = tema;
 	}
+
+	public List<Postagem> getPostagens() {
+		return postagens;
+	}
+
+	public void setPostagens(List<Postagem> postagens) {
+		this.postagens = postagens;
+	}
+
 }

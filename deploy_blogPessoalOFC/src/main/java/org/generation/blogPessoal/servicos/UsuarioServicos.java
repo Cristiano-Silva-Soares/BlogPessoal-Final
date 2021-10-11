@@ -66,6 +66,8 @@ public class UsuarioServicos {
 				usuarioParaAutenticar.setIdUsuario(usuarioExistente.getIdUsuario());
 				usuarioParaAutenticar.setNomeUsuario(usuarioExistente.getNomeUsuario());
 				usuarioParaAutenticar.setSenha(usuarioExistente.getSenha());
+				usuarioParaAutenticar.setFoto(usuarioExistente.getFoto());
+				usuarioParaAutenticar.setTipoUsuario(usuarioExistente.getTipoUsuario());
 				return Optional.ofNullable(usuarioParaAutenticar);// Usuario Credenciado.
 			} else {
 
@@ -95,6 +97,9 @@ public class UsuarioServicos {
 
 			usuarioExistente.setNomeUsuario(usuarioParaAlterar.getNomeUsuario());
 			usuarioExistente.setSenha(senhaCriptografada);
+			usuarioExistente.setEmail(usuarioParaAlterar.getEmail());
+			usuarioExistente.setFoto(usuarioParaAlterar.getFoto());
+			usuarioExistente.setTipoUsuario(usuarioParaAlterar.getTipoUsuario());
 			return Optional.ofNullable(repository4.save(usuarioExistente));
 		}).orElseGet(() -> {
 

@@ -10,8 +10,7 @@ package org.generation.blogPessoal.model.utilities;
  */
 
 public class UsuarioDTO {
-	
-	
+
 	private String email;
 
 	private String senha;
@@ -19,6 +18,8 @@ public class UsuarioDTO {
 	private Long idUsuario;
 	private String nomeUsuario;
 	private String token;
+	private String foto;
+	private String tipoUsuario;
 
 	public String getEmail() {
 		return email;
@@ -59,5 +60,21 @@ public class UsuarioDTO {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+
 }

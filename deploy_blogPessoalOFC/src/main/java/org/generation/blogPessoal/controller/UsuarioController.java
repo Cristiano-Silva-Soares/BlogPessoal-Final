@@ -14,6 +14,7 @@ import org.generation.blogPessoal.repository.UsuarioRepository;
 import org.generation.blogPessoal.servicos.UsuarioServicos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/v1.5/blog/users")
+@CrossOrigin("*")
 public class UsuarioController {
 	@Autowired
 	private UsuarioRepository repositoryU;
@@ -63,7 +65,7 @@ public class UsuarioController {
 	public ResponseEntity<Object> credenciaisUsuario(@Valid @RequestBody UsuarioDTO usuarioParaAutenticar) {
 		Optional<?> objectOptionalII = repositoryS.pegarCredenciaisUsuario(usuarioParaAutenticar);
 
-		if (objectOptionalII.isEmpty()) {
+		if (objectOptionalII.isPresent()) {
 			return ResponseEntity.status(200).body(objectOptionalII.get());
 
 		} else {
