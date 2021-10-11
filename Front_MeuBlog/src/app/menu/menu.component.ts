@@ -11,6 +11,7 @@ export class MenuComponent implements OnInit {
 
 nome = environment.nomeUsuario
 foto = environment.foto
+id= environment.idUsuario
 
 
   constructor(

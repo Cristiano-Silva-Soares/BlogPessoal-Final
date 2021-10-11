@@ -3,5 +3,12 @@
 }
 
 .iniciopage{
-  background-color: #dfcaa0;
+  background-color: #3a3a28;
+}
+
+
+.inicTest{
+  background-image: url('https://i.imgur.com/GdYu70E.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
