@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tema } from 'src/app/models/Tema';
+import { AlertasService } from 'src/app/services/alertas.service';
 import { TemaService } from 'src/app/services/tema.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -16,7 +17,8 @@ export class TemaEditComponent implements OnInit {
   constructor(
     private temaService: TemaService,
     private router: Router,
-    private routerAtual: ActivatedRoute
+    private routerAtual: ActivatedRoute,
+    private alertaService: AlertasService
   ) { }
 
   ngOnInit(){
@@ -38,7 +40,7 @@ export class TemaEditComponent implements OnInit {
   atualizar() {
     this.temaService.putTema(this.tema).subscribe((resp: Tema)=> {
       this.tema = resp
-      alert('Tema atualizado!')
+      this.alertaService.showAlertSuccess('Tema atualizado!')
       this.router.navigate(['/tema'])
     })
   }

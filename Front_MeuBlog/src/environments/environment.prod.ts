@@ -3,5 +3,6 @@ export const environment = {
   token: '',
   nomeUsuario: '',
   idUsuario: 0,
-  foto: ''
+  foto: '',
+  tipo: '' //função criada para definir os afazeres e papeis do ADM
 };

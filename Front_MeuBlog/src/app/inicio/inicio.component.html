@@ -5,15 +5,15 @@
       <div class="row d-flex justify-content-center">
           <div class="col-md-6 text-light">
             <h1 class="fs-54">Seja Bem Vinde!</h1>
-            <h5 class="fs-18">Vamos falar um pouco sobre arte?<img src="https://img.icons8.com/ios/25/ffffff/art-book.png"/></h5>
+            <h5 class="fs-18">Vamos falar um pouco sobre arte? <img src="https://img.icons8.com/ios/25/ffffff/art-book.png"/></h5>
 
           </div>
       </div>
 
       <div class="row d-flex justify-content-center mt-3 mb-5">
           <div class="col-md-6">
-              <button class="btn btn-outline-light mr-2" data-toggle="modal" data-target="#novaPostagem">Nova Postagem</button>
-              <a class="btn btn-outline-light" href="#postagens">Ver Postagens</a>
+              <button class="btn btn-outline-light mr-2 p-2" data-toggle="modal" data-target="#novaPostagem">Nova Postagem</button>
+              <a class="btn btn-outline-light html" href="#postagens">Ver Postagens</a>
           </div>
       </div>
 
@@ -33,12 +33,21 @@
     </div>
   </nav>
 
-  <div class="tab-content" id="nav-tabContent">
+  <div class="tab-content p-2" id="nav-tabContent">
     <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="nav-todasPostagens-tab">
 
 
+      <div class="row d-flex justify-content-center mt-5 mb-5">
+        <div class="col-md-4">
+          <div class="form-group">
+              <input type="text" class="form-control" id="titulo" placeholder="Digite um título de postagem para pesquisar" [(ngModel)]='tituloPost' (keyup)='findByTitulo()'>
+          </div>
+        </div>
+      </div>
+
+
         <div class="card-columns">
-          <div class="card text-center" *ngFor='let postagem of listaPostagens'>
+          <div class="card text-center" *ngFor='let postagem of listaPostagens | orderBy: key: reverse' >
 
           <div class="card-body">
             <h5 class="card-title m-0"><img src="https://img.icons8.com/ios-glyphs/25/000000/edvard-munch.png"/> {{postagem.titulo}} <img src="https://img.icons8.com/ios-glyphs/25/000000/edvard-munch.png"/></h5>
@@ -56,7 +65,7 @@
     <div class="tab-pane fade" id="minhasPostagens" role="tabpanel" aria-labelledby="nav-minhasPostagens-tab">
 
       <div class="card-columns">
-        <div class="card text-center" *ngFor='let postagem of user.minhasPostagens'>
+        <div class="card text-center" *ngFor='let postagem of user.minhasPostagens | orderBy: key: reverse'>
 
         <div class="card-body">
           <h5 class="card-title m-0"><img src="https://img.icons8.com/ios-glyphs/25/000000/edvard-munch.png"/> {{postagem.titulo}} <img src="https://img.icons8.com/ios-glyphs/25/000000/edvard-munch.png"/></h5>
@@ -74,9 +83,16 @@
 
     <div class="tab-pane fade" id="postagemTema" role="tabpanel" aria-labelledby="nav-postagemTema-tab">
 
-      <div class="card-columns" *ngFor='let tema of listaTemas'>
-        <div class="card text-center" *ngFor='let postagem of tema.postagens'>
+      <div class="row d-flex justify-content-center mt-5 mb-5">
+        <div class="col-md-4">
+          <div class="form-group">
+              <input type="text" class="form-control" id="titulo" placeholder="Digite um tema de postagem para pesquisar" [(ngModel)]='nomeTema' (keyup)='findByNomeTema()'>
+          </div>
+        </div>
+      </div>
 
+      <div class="card-columns" *ngFor='let tema of listaTemas | orderBy: key: reverse'>
+        <div class="card text-center" *ngFor='let postagem of tema.postagens'>
         <div class="card-body">
           <h5 class="card-title m-0"><img src="https://img.icons8.com/ios-glyphs/25/000000/edvard-munch.png"/> {{postagem.titulo}} <img src="https://img.icons8.com/ios-glyphs/25/000000/edvard-munch.png"/></h5>
           <p class="card-text mt-3">{{tema.tema}}</p>

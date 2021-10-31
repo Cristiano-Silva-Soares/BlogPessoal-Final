@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
+import { AlertasComponent } from '../alertas/alertas.component';
 import { Tema } from '../models/Tema';
+import { AlertasService } from '../services/alertas.service';
 import { TemaService } from '../services/tema.service';
 
 @Component({
@@ -16,12 +18,18 @@ export class TemaComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private temaService: TemaService
+    private temaService: TemaService,
+    private alertaService: AlertasService
   ) { }
 
   ngOnInit() {
     if(environment.token == '') {
       this.router.navigate(['/entrar'])
+    }
+
+    if(environment.tipo != 'adm') {
+      this.alertaService.showAlertInfo('Você Precisa ser ADM para acessar essa função!')
+      this.router.navigate(['/inicio'])
     }
 
     this.findAllTemas()
@@ -30,13 +38,14 @@ export class TemaComponent implements OnInit {
   findAllTemas() {
     this.temaService.getAllTema().subscribe((resp: Tema[])=> {
       this.listaDeTemas= resp
+      this.router.navigate(['/inicio'])
     })
   }
 
   cadastrar() {
     this.temaService.postTema(this.tema).subscribe((resp: Tema)=> {
       this.tema= resp
-      alert('Tema cadastrado!')
+      this.alertaService.showAlertSuccess('Tema cadastrado!')
       this.findAllTemas()
       this.tema= new Tema()
     })
